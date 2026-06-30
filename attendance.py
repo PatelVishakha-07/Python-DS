@@ -9,13 +9,19 @@ There is no need to search from Roll No. 1 to Roll No. 16
 This is called direct (random) access, which is the most important feature of an array
 """
 
-def markAttendance():
-    atd_sheet = ["AB"] * 30
-    rno = int(input("enter roll no: "))
+class Attendance:
 
-    atd_sheet[rno-1] = "P"
+    def __init__(self):
+        self.atd_sheet = ["AB"] * 30
 
-    print("Attendance: ")
-    print(atd_sheet)
+    def markAttendance(self):
+        rno = int(input("enter roll no: "))
+        self.atd_sheet[rno-1] = "P"
 
-markAttendance()
+    def showAttendance(self):    
+        print("Attendance: ")
+        print(self.atd_sheet)
+
+atd = Attendance()
+atd.markAttendance()
+atd.showAttendance()
