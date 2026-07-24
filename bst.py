@@ -1,3 +1,4 @@
+from collections import deque
 class Node:
     def __init__(self, val):
         self.val = val
@@ -34,6 +35,23 @@ class BST:
             self.postorder(root.right)
             print(root.val, end=" ")
 
+    def levelOrder(self, root):
+        queue = deque()
+        queue.append(root)
+
+        while queue:            
+            s = len(queue)        
+            
+            for i in range(s):
+                r = queue.popleft()
+                print(r.val, end=" ")
+                if r.left:
+                    queue.append(r.left)
+                if r.right:
+                    queue.append(r.right)
+            print("")
+            
+
 b = BST()
 root = None
 while True:
@@ -42,6 +60,7 @@ while True:
 2. InOrder
 3. PreOrder
 4. PostOrder
+5. Level Order
 Enter your choice: """))
     
     if ch == 0:
@@ -58,6 +77,9 @@ Enter your choice: """))
 
     elif ch == 4:
         b.postorder(root)
+
+    elif ch==5:
+        b.levelOrder(root)
 
     else:
         print("Invalid Choice...")
